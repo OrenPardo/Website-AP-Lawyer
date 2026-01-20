@@ -304,7 +304,7 @@
             }
         };
 
-        let currentLang = 'en';
+        let currentLang = 'he';
 
         function updateContent() {
             document.querySelectorAll('[data-t]').forEach(el => {
@@ -320,6 +320,9 @@
             
             document.getElementById('lang-toggle').innerText = currentLang === 'en' ? 'HE' : 'EN';
         }
+
+        // Initialize with default language
+        updateContent();
 
         document.getElementById('lang-toggle').addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'he' : 'en';
