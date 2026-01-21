@@ -62,7 +62,8 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="text-2xl font-bold tracking-tighter hover:text-gold transition rtl:text-right" id="brand-link">ALON <span class="text-gold">PARDO</span></a>
             <div class="flex items-center gap-6">
-                <a href="/" class="text-xs font-bold uppercase tracking-widest hover:text-gold transition" id="back-link">Back to Home</a>
+                <a href="/" class="hidden md:block text-xs font-bold uppercase tracking-widest hover:text-gold transition" id="back-link">Back to Home</a>
+                <a href="/#contact" class="bg-stone-900 text-white px-6 py-2 text-sm uppercase tracking-widest hover:bg-gold transition" id="nav-contact-button">Get in Touch</a>
             </div>
         </div>
     </nav>
@@ -82,10 +83,10 @@
                         <!-- Injected via JS -->
                     </ul>
                 </div>
-                <div class="bg-stone-900 text-white p-8 rounded-sm">
+                <div class="bg-stone-50 border border-stone-200 p-8 rounded-sm">
                     <h3 class="text-xl mb-4" id="cta-title">Need Legal Advice?</h3>
-                    <p class="text-stone-400 mb-6 text-sm" id="cta-desc">Schedule a confidential consultation to discuss your specific case requirements.</p>
-                    <a href="/#contact" class="inline-block bg-gold text-stone-900 px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition w-full text-center" id="cta-button">Contact Now</a>
+                    <p class="text-stone-600 mb-6 text-sm" id="cta-desc">Schedule a confidential consultation to discuss your specific case requirements.</p>
+                    <a href="/#contact" class="inline-block border border-gold text-gold px-8 py-4 font-bold uppercase tracking-widest hover:bg-gold hover:text-white transition w-full text-center" id="cta-button-secondary">Consultation Request</a>
                 </div>
             </div>
         </div>
@@ -98,7 +99,8 @@
                 services_label: "Professional Services",
                 cta_title: "Need Legal Advice?",
                 cta_desc: "Schedule a confidential consultation to discuss your specific case requirements.",
-                cta_button: "Contact Now",
+                cta_button_nav: "CONTACT ME",
+                cta_button_sec: "Consultation Request",
                 brand: 'ALON <span class="text-gold">PARDO</span>'
             },
             he: {
@@ -106,7 +108,8 @@
                 services_label: "שירותים מקצועיים",
                 cta_title: "זקוק לייעוץ משפטי?",
                 cta_desc: "קבע ייעוץ חסוי לדיון בדרישות המקרה הספציפיות שלך.",
-                cta_button: "צור קשר עכשיו",
+                cta_button_nav: "יצירת קשר",
+                cta_button_sec: "בקשה לייעוץ",
                 brand: 'אלון <span class="text-gold">פרדו</span>'
             }
         };
@@ -161,7 +164,7 @@
                 icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`
             },
             accessibility: {
-                title: { en: "Accessibility Law", he: "דיני נגישות" },
+                title: { en: "Accessibility Law", he: "נגישות" },
                 desc: { 
                     en: "Leading advocacy for accessibility rights and compliance with national and international standards. Ensuring equality in all spaces.", 
                     he: "הובלת ייצוג לזכויות נגישות ועמידה בתקנים לאומיים ובינלאומיים. הבטחת שוויון בכל המרחבים." 
@@ -185,11 +188,12 @@
             
             document.getElementById('brand-link').innerHTML = content[lang].brand;
             document.getElementById('back-link').textContent = content[lang].back;
+            document.getElementById('nav-contact-button').textContent = content[lang].cta_button_nav;
             document.getElementById('services-label').textContent = content[lang].services_label;
             document.getElementById('cta-title').textContent = content[lang].cta_title;
             document.getElementById('cta-desc').textContent = content[lang].cta_desc;
-            document.getElementById('cta-button').textContent = content[lang].cta_button;
-            document.getElementById('cta-button').href = `/${lang === 'en' ? '' : '#contact'}`;
+            document.getElementById('cta-button-secondary').textContent = content[lang].cta_button_sec;
+            document.getElementById('cta-button-secondary').href = `/${lang === 'he' ? '' : '?lang=en'}#contact`;
 
             document.getElementById('expertise-title').textContent = page.title[lang];
             document.getElementById('expertise-desc').textContent = page.desc[lang];
@@ -205,7 +209,5 @@
             });
         }
     </script>
-</body>
-</html>
 </body>
 </html>
