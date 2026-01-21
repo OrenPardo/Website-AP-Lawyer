@@ -30,11 +30,11 @@
             height: 80vh;
         }
         /* Header Navigation Hover Effect */
-        nav a:not(.bg-stone-900) {
+        nav a:not(.bg-stone-900):not(#brand-link) {
             position: relative;
             text-decoration: none;
         }
-        nav a:not(.bg-stone-900)::after {
+        nav a:not(.bg-stone-900):not(#brand-link)::after {
             content: '';
             position: absolute;
             width: 0;
@@ -44,14 +44,14 @@
             background-color: #926d27;
             transition: width 0.3s ease;
         }
-        [dir="rtl"] nav a:not(.bg-stone-900)::after {
+        [dir="rtl"] nav a:not(.bg-stone-900):not(#brand-link)::after {
             left: auto;
             right: 0;
         }
-        nav a:not(.bg-stone-900):hover::after {
+        nav a:not(.bg-stone-900):not(#brand-link):hover::after {
             width: 100%;
         }
-        nav a:not(.bg-stone-900):hover {
+        nav a:not(.bg-stone-900):not(#brand-link):hover {
             font-weight: 600;
         }
     </style>
