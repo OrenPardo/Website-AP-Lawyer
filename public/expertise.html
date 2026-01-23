@@ -188,29 +188,37 @@
             
             document.getElementById('brand-link').innerHTML = content[lang].brand;
             document.getElementById('brand-link').href = `/${lang === 'en' ? '?lang=en' : ''}`;
-            // Update brand font size based on language to match index.html
+            // Adjust header font size based on language to match index.html
             if (lang === 'he') {
                 document.getElementById('brand-link').classList.remove('text-2xl');
                 document.getElementById('brand-link').classList.add('text-[2.0rem]');
+                document.getElementById('back-link').classList.remove('text-xs');
+                document.getElementById('back-link').classList.add('text-[1.10rem]');
             } else {
                 document.getElementById('brand-link').classList.remove('text-[2.0rem]');
                 document.getElementById('brand-link').classList.add('text-2xl');
+                document.getElementById('back-link').classList.remove('text-[1.10rem]');
+                document.getElementById('back-link').classList.add('text-xs');
             }
-            document.getElementById('back-link').textContent = content[lang].back;
-            document.getElementById('back-link').href = `/${lang === 'en' ? '?lang=en' : ''}`;
-            document.getElementById('nav-contact-button').textContent = content[lang].cta_button_nav;
-            document.getElementById('nav-contact-button').href = `/${lang === 'en' ? '?lang=en' : ''}#contact`;
             
-            // Add or update other header links if they exist in expertise.html
-            document.querySelectorAll('nav a').forEach(link => {
-                const url = new URL(link.href, window.location.origin);
-                if (lang === 'en') {
-                    url.searchParams.set('lang', 'en');
-                } else {
-                    url.searchParams.delete('lang');
+            // Synchronize all links with the current language
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href.startsWith('/') || href.includes(window.location.origin))) {
+                    const baseUrl = href.split('?')[0].split('#')[0];
+                    if (baseUrl.endsWith('.html') || baseUrl === '/' || baseUrl === '') {
+                        const url = new URL(link.href, window.location.origin);
+                        if (lang === 'en') {
+                            url.searchParams.set('lang', 'en');
+                        } else {
+                            url.searchParams.delete('lang');
+                        }
+                        link.href = url.pathname + url.search + url.hash;
+                    }
                 }
-                link.href = url.pathname + url.search + url.hash;
             });
+
+            document.getElementById('back-link').textContent = content[lang].back;
             document.getElementById('services-label').textContent = content[lang].services_label;
             document.getElementById('cta-title').textContent = content[lang].cta_title;
             document.getElementById('cta-desc').textContent = content[lang].cta_desc;
@@ -223,6 +231,7 @@
             document.getElementById('expertise-background').innerHTML = page.icon;
 
             const list = document.getElementById('services-list');
+            list.innerHTML = '';
             page.services[lang].forEach(service => {
                 const li = document.createElement('li');
                 li.className = 'flex items-center gap-3';
