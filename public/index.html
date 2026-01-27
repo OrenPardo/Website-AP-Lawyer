@@ -428,11 +428,11 @@
             // H1 specific size for Hebrew
             const heroTitle = document.querySelector('h1[data-t="hero_title"]');
             if (currentLang === 'he') {
-                heroTitle.classList.remove('text-5xl', 'md:text-7xl');
-                heroTitle.classList.add('text-[5.5rem]', 'whitespace-nowrap');
+                heroTitle.classList.remove('text-5xl', 'md:text-7xl', 'leading-tight');
+                heroTitle.classList.add('text-[5.5rem]', 'leading-none');
             } else {
-                heroTitle.classList.remove('text-[5.5rem]', 'whitespace-nowrap');
-                heroTitle.classList.add('text-5xl', 'md:text-7xl');
+                heroTitle.classList.remove('text-[5.5rem]', 'leading-none');
+                heroTitle.classList.add('text-5xl', 'md:text-7xl', 'leading-tight');
             }
 
             // Footer specific text sizes for Hebrew
