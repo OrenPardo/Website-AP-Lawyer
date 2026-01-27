@@ -445,6 +445,26 @@
                 heroSubtitle.classList.add('text-sm', 'mb-4');
             }
 
+            // Hero description size for Hebrew
+            const heroDescription = document.querySelector('[data-t="hero_description"]');
+            if (currentLang === 'he') {
+                heroDescription.classList.remove('text-lg');
+                heroDescription.classList.add('text-[1.35rem]');
+            } else {
+                heroDescription.classList.remove('text-[1.35rem]');
+                heroDescription.classList.add('text-lg');
+            }
+
+            // CTA buttons size for Hebrew
+            const ctaButtons = document.querySelectorAll('[data-t="hero_cta_1"], [data-t="hero_cta_2"]');
+            ctaButtons.forEach(btn => {
+                if (currentLang === 'he') {
+                    btn.classList.add('text-[1.1rem]');
+                } else {
+                    btn.classList.remove('text-[1.1rem]');
+                }
+            });
+
             // Footer specific text sizes for Hebrew
             const footerCopyText = document.querySelector('#footer-copy-wrapper');
             const footerLegalLinks = document.querySelectorAll('#footer-actions-wrapper .text-xs');
