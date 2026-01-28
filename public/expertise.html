@@ -629,16 +629,17 @@
             document.querySelectorAll('a').forEach(link => {
                 const href = link.getAttribute('href');
                 if (href && (href.startsWith('/') || href.includes(window.location.origin))) {
-                    const baseUrl = href.split('?')[0].split('#')[0];
-                    if (baseUrl.endsWith('.html') || baseUrl === '/' || baseUrl === '') {
+                    try {
                         const url = new URL(link.href, window.location.origin);
-                        if (lang === 'en') {
-                            url.searchParams.set('lang', 'en');
-                        } else {
-                            url.searchParams.delete('lang');
+                        if (url.origin === window.location.origin) {
+                            if (lang === 'en') {
+                                url.searchParams.set('lang', 'en');
+                            } else {
+                                url.searchParams.delete('lang');
+                            }
+                            link.href = url.pathname + url.search + url.hash;
                         }
-                        link.href = url.pathname + url.search + url.hash;
-                    }
+                    } catch (e) {}
                 }
             });
 
