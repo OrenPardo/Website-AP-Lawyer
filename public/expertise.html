@@ -848,11 +848,13 @@
             document.getElementById('nav-expertise').textContent = content[lang].nav_expertise;
             document.getElementById('nav-philosophy').textContent = content[lang].nav_philosophy;
 
-            // Apply same Hebrew font-size boosts as homepage
+            // Apply same language font-size adjustments as homepage
             if (lang === 'he') {
                 document.getElementById('brand-link').classList.remove('text-2xl', 'text-xl');
                 document.getElementById('brand-link').classList.add('text-[2.0rem]');
+                document.getElementById('nav-expertise').classList.remove('text-sm');
                 document.getElementById('nav-expertise').classList.add('text-[1.10rem]');
+                document.getElementById('nav-philosophy').classList.remove('text-sm');
                 document.getElementById('nav-philosophy').classList.add('text-[1.10rem]');
                 document.getElementById('nav-contact-button').classList.remove('text-sm');
                 document.getElementById('nav-contact-button').classList.add('text-[1.10rem]');
@@ -860,7 +862,9 @@
                 document.getElementById('brand-link').classList.remove('text-[2.0rem]');
                 document.getElementById('brand-link').classList.add('text-2xl');
                 document.getElementById('nav-expertise').classList.remove('text-[1.10rem]');
+                document.getElementById('nav-expertise').classList.add('text-sm');
                 document.getElementById('nav-philosophy').classList.remove('text-[1.10rem]');
+                document.getElementById('nav-philosophy').classList.add('text-sm');
                 document.getElementById('nav-contact-button').classList.remove('text-[1.10rem]');
                 document.getElementById('nav-contact-button').classList.add('text-sm');
             }
