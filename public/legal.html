@@ -70,9 +70,9 @@
     </main>
 
     <footer class="py-12 bg-stone-950 text-stone-600 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-baseline gap-8">
-            <div class="text-xs uppercase tracking-widest order-2 md:order-1 rtl:order-2" data-t="footer_copy">&copy; 2026 אלון פרדו. כל הזכויות שמורות.</div>
-            <div class="flex flex-col md:flex-row items-baseline gap-8 order-1 md:order-2 rtl:order-1">
+        <div id="footer-container" class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-baseline gap-8">
+            <div id="footer-copy-wrapper" class="text-xs uppercase tracking-widest order-2 md:order-1 rtl:order-2" data-t="footer_copy">&copy; 2026 אלון פרדו. כל הזכויות שמורות.</div>
+            <div id="footer-actions-wrapper" class="flex flex-col md:flex-row items-baseline gap-8 order-1 md:order-2 rtl:order-1">
                 <button id="footer-brand" class="text-xl font-bold tracking-tighter text-white hover:text-gold transition focus:outline-none whitespace-nowrap" data-t="brand_name" aria-label="Back to home">ALON <span class="text-gold">PARDO</span></button>
                 <div class="text-xs uppercase tracking-widest rtl:space-x-reverse flex flex-wrap justify-center md:justify-end items-baseline gap-x-6 gap-y-2">
                     <a href="/privacy" class="hover:text-white transition" data-t="footer_privacy">מדיניות פרטיות</a>
@@ -198,6 +198,35 @@
                 } else {
                     footerBrand.classList.remove('text-[2.0rem]');
                     footerBrand.classList.add('text-xl');
+                }
+            }
+
+            // Adjust footer layout based on language (matching homepage)
+            const footerContainer = document.getElementById('footer-container');
+            const footerCopyW = document.getElementById('footer-copy-wrapper');
+            const footerActionsW = document.getElementById('footer-actions-wrapper');
+            const footerLinksDiv = footerActionsW ? footerActionsW.querySelector('.text-xs') : null;
+            if (currentLang === 'en') {
+                footerContainer.classList.remove('justify-between');
+                footerContainer.classList.add('justify-start');
+                footerActionsW.classList.remove('md:order-2');
+                footerActionsW.classList.add('md:order-1');
+                footerCopyW.classList.remove('md:order-1');
+                footerCopyW.classList.add('md:order-2', 'md:ml-auto');
+                if (footerLinksDiv) {
+                    footerLinksDiv.classList.remove('md:justify-end');
+                    footerLinksDiv.classList.add('md:justify-start');
+                }
+            } else {
+                footerContainer.classList.remove('justify-start');
+                footerContainer.classList.add('justify-between');
+                footerActionsW.classList.remove('md:order-1');
+                footerActionsW.classList.add('md:order-2');
+                footerCopyW.classList.remove('md:order-2', 'md:ml-auto');
+                footerCopyW.classList.add('md:order-1');
+                if (footerLinksDiv) {
+                    footerLinksDiv.classList.remove('md:justify-start');
+                    footerLinksDiv.classList.add('md:justify-end');
                 }
             }
         }

@@ -181,9 +181,9 @@
     </main>
 
     <footer class="py-12 bg-stone-950 text-stone-600 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-baseline gap-8">
+        <div id="footer-container-expertise" class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-baseline gap-8">
             <div class="text-xs uppercase tracking-widest order-2 md:order-1 rtl:order-2" id="footer-copy-expertise"></div>
-            <div class="flex flex-col md:flex-row items-baseline gap-8 order-1 md:order-2 rtl:order-1">
+            <div id="footer-actions-expertise" class="flex flex-col md:flex-row items-baseline gap-8 order-1 md:order-2 rtl:order-1">
                 <button onclick="window.location.href='/'" class="text-xl font-bold tracking-tighter text-white hover:text-gold transition focus:outline-none whitespace-nowrap" id="footer-brand-expertise">ALON <span class="text-gold">PARDO</span></button>
                 <div class="text-xs uppercase tracking-widest rtl:space-x-reverse flex flex-wrap justify-center md:justify-end items-baseline gap-x-6 gap-y-2" id="footer-links-expertise">
                     <a href="/privacy" class="hover:text-white transition" id="fl-privacy">Privacy Policy</a>
@@ -995,6 +995,35 @@
         document.getElementById('fl-cookies').textContent = footerLabels[lang].cookies;
         document.getElementById('fl-disclaimer').textContent = footerLabels[lang].disclaimer;
         document.getElementById('fl-access').textContent = footerLabels[lang].access;
+
+        // Adjust footer layout based on language (matching homepage)
+        const footerContainer = document.getElementById('footer-container-expertise');
+        const footerCopyEl = document.getElementById('footer-copy-expertise');
+        const footerActionsEl = document.getElementById('footer-actions-expertise');
+        const footerLinksDiv = document.getElementById('footer-links-expertise');
+        if (lang === 'en') {
+            footerContainer.classList.remove('justify-between');
+            footerContainer.classList.add('justify-start');
+            footerActionsEl.classList.remove('md:order-2');
+            footerActionsEl.classList.add('md:order-1');
+            footerCopyEl.classList.remove('md:order-1');
+            footerCopyEl.classList.add('md:order-2', 'md:ml-auto');
+            if (footerLinksDiv) {
+                footerLinksDiv.classList.remove('md:justify-end');
+                footerLinksDiv.classList.add('md:justify-start');
+            }
+        } else {
+            footerContainer.classList.remove('justify-start');
+            footerContainer.classList.add('justify-between');
+            footerActionsEl.classList.remove('md:order-1');
+            footerActionsEl.classList.add('md:order-2');
+            footerCopyEl.classList.remove('md:order-2', 'md:ml-auto');
+            footerCopyEl.classList.add('md:order-1');
+            if (footerLinksDiv) {
+                footerLinksDiv.classList.remove('md:justify-start');
+                footerLinksDiv.classList.add('md:justify-end');
+            }
+        }
 
         // Set up language toggle
         const langToggle = document.getElementById('lang-toggle');
