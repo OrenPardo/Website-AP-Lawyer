@@ -179,7 +179,7 @@
                     </div>
 
                     <!-- What happens next -->
-                    <div class="mt-8 p-8 bg-stone-900 text-white rounded-sm rtl:text-right">
+                    <div id="next-steps-section" class="mt-8 p-8 bg-stone-900 text-white rounded-sm rtl:text-right">
                         <h4 class="text-xl font-bold mb-6 border-b border-stone-700 pb-4" id="next-steps-title">What happens next</h4>
                         <ol class="space-y-6">
                             <li class="flex gap-4 items-start">
@@ -1064,6 +1064,13 @@
         const type = pathType || urlParams.get('type') || 'criminal';
         const lang = urlParams.get('lang') || 'he';
         const page = pages[type];
+        const isLobbyPage = ['privacy', 'terms', 'cookies', 'disclaimer', 'accessibility-statement'].includes(type);
+
+        // Hide sticky WhatsApp and "What happens next" on lobby pages
+        if (isLobbyPage) {
+            document.getElementById('whatsapp-sticky').style.display = 'none';
+            document.getElementById('next-steps-section').style.display = 'none';
+        }
 
         if (page) {
             document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
