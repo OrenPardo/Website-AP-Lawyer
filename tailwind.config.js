@@ -10,6 +10,7 @@ module.exports = {
     'text-[1.1rem]',
     'text-[1.10rem]',
     'text-[1.35rem]',
+    'text-[1.75rem]',
     'text-[2.0rem]',
     'text-[4.5rem]',
     'leading-none',

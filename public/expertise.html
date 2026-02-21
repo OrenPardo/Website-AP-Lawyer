@@ -94,13 +94,13 @@
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200" aria-label="Main Navigation">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <button class="text-2xl font-bold tracking-tighter hover:text-gold transition text-left rtl:text-right" id="brand-link" aria-label="Back to home">ALON <span class="text-gold">PARDO</span></button>
-            <div class="hidden md:flex space-x-8 font-medium uppercase tracking-widest rtl:space-x-reverse">
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest rtl:space-x-reverse">
                 <a href="/#expertise" class="hover:text-gold transition" id="nav-expertise">תחומי עיסוק</a>
                 <a href="/#about" class="hover:text-gold transition" id="nav-philosophy">איך אני עובד</a>
             </div>
             <div class="flex items-center gap-6">
                 <button id="lang-toggle" class="text-xs font-bold uppercase tracking-widest hover:text-gold transition" aria-label="Switch Language / החלף שפה">HE</button>
-                <a href="/#contact" class="bg-stone-900 text-white px-6 py-2 text-sm uppercase tracking-widest hover:bg-gold transition" id="nav-contact-button" data-t="nav_get_in_touch">Get in Touch</a>
+                <a href="/#contact" class="bg-stone-900 text-white px-8 py-2 text-xs uppercase tracking-widest hover:bg-gold transition" id="nav-contact-button" data-t="nav_get_in_touch">Get in Touch</a>
             </div>
         </div>
     </nav>
@@ -861,27 +861,6 @@
             document.getElementById('brand-link').innerHTML = content[lang].brand;
             document.getElementById('nav-expertise').textContent = content[lang].nav_expertise;
             document.getElementById('nav-philosophy').textContent = content[lang].nav_philosophy;
-
-            // Apply same language font-size adjustments as homepage
-            if (lang === 'he') {
-                document.getElementById('brand-link').classList.remove('text-2xl', 'text-xl');
-                document.getElementById('brand-link').classList.add('text-[2.0rem]');
-                document.getElementById('nav-expertise').classList.remove('text-sm');
-                document.getElementById('nav-expertise').classList.add('text-[1.10rem]');
-                document.getElementById('nav-philosophy').classList.remove('text-sm');
-                document.getElementById('nav-philosophy').classList.add('text-[1.10rem]');
-                document.getElementById('nav-contact-button').classList.remove('text-sm');
-                document.getElementById('nav-contact-button').classList.add('text-[1.10rem]');
-            } else {
-                document.getElementById('brand-link').classList.remove('text-[2.0rem]');
-                document.getElementById('brand-link').classList.add('text-2xl');
-                document.getElementById('nav-expertise').classList.remove('text-[1.10rem]');
-                document.getElementById('nav-expertise').classList.add('text-sm');
-                document.getElementById('nav-philosophy').classList.remove('text-[1.10rem]');
-                document.getElementById('nav-philosophy').classList.add('text-sm');
-                document.getElementById('nav-contact-button').classList.remove('text-[1.10rem]');
-                document.getElementById('nav-contact-button').classList.add('text-sm');
-            }
 
             // Synchronize all links with the current language
             document.querySelectorAll('a').forEach(link => {

@@ -138,13 +138,13 @@
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200" aria-label="Main Navigation">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-2xl font-bold tracking-tighter hover:text-gold transition text-left rtl:text-right" data-t="brand_name" aria-label="Back to top">ALON <span class="text-gold">PARDO</span></button>
-            <div class="hidden md:flex space-x-8 font-medium uppercase tracking-widest rtl:space-x-reverse">
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest rtl:space-x-reverse">
                 <a href="#expertise" class="hover:text-gold transition" data-t="nav_expertise">תחומי עיסוק</a>
                 <a href="#about" class="hover:text-gold transition" data-t="nav_philosophy">איך אני עובד</a>
             </div>
             <div class="flex items-center gap-6">
                 <button id="lang-toggle" class="text-xs font-bold uppercase tracking-widest hover:text-gold transition" aria-label="Switch Language / החלף שפה">HE</button>
-                <a href="#contact" class="bg-stone-900 text-white px-6 py-2 text-sm uppercase tracking-widest hover:bg-gold transition" data-t="nav_get_in_touch">Get in Touch</a>
+                <a href="#contact" class="bg-stone-900 text-white px-8 py-2 text-xs uppercase tracking-widest hover:bg-gold transition" data-t="nav_get_in_touch">Get in Touch</a>
             </div>
         </div>
     </nav>
@@ -592,33 +592,6 @@
             
             document.getElementById('lang-toggle').innerText = currentLang === 'en' ? 'HE' : 'EN';
 
-            // Apply specific text sizes based on language
-            const navLinks = document.querySelectorAll('nav a[data-t]');
-            const brandNames = document.querySelectorAll('[data-t="brand_name"]');
-            
-            navLinks.forEach(link => {
-                if (currentLang === 'he') {
-                    link.classList.remove('text-sm');
-                    link.classList.add('text-[1.10rem]');
-                } else {
-                    link.classList.remove('text-[1.10rem]');
-                    link.classList.add('text-sm');
-                }
-            });
-
-            brandNames.forEach(brand => {
-                if (currentLang === 'he') {
-                    brand.classList.remove('text-2xl', 'text-xl');
-                    brand.classList.add('text-[2.0rem]');
-                } else {
-                    brand.classList.remove('text-[2.0rem]');
-                    if (brand.tagName.toLowerCase() === 'button' && brand.closest('nav')) {
-                        brand.classList.add('text-2xl');
-                    } else {
-                        brand.classList.add('text-xl');
-                    }
-                }
-            });
 
             // H1 specific size for Hebrew
             const heroTitle = document.querySelector('h1[data-t="hero_title"]');
