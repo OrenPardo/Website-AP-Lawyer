@@ -1,6 +1,6 @@
 {
   "name": "lawyer-landing-page",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Professional landing page for a self-employed lawyer",
   "scripts": {
     "dev": "next dev",
@@ -19,5 +19,11 @@
     "@tailwindcss/postcss": "^4.2.1",
     "tailwindcss": "^4.2.1"
   },
-  "private": true
+  "private": true,
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
 }
